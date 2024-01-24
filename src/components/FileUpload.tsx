@@ -14,7 +14,7 @@ const FileUpload = () => {
             const file = acceptedFiles[0];
             if (file.size > 10 * 1024 * 1024) {
                 // bigger than 10mb!
-                alert("File too large");
+                alert("please upload a smaller file");
                 return;
             }
             try {
