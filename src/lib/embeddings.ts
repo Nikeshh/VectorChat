@@ -13,6 +13,9 @@ export async function getEmbeddings(text: string) {
             input: text.replace(/\n/g, ' ')
         });
         const result = await response.json();
+        if(!result.data) {
+            console.log(result);
+        }
         return result.data[0].embedding as number[];
     } catch (error) {
         console.log('error calling openai embeddings api', error);
