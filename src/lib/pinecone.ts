@@ -4,7 +4,7 @@ import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import { Document, RecursiveCharacterTextSplitter } from '@pinecone-database/doc-splitter';
 import md5 from 'md5';
 import { getEmbeddings } from "./embeddings";
-import { covertToAscii, delay } from "./utils";
+import { convertToAscii, delay } from "./utils";
 
 let pinecone: PineconeClient | null = null;
 
@@ -53,7 +53,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
     const pineconeIndex = client.Index('chatpdf');
 
     console.log('inserting vectors into pinecone');
-    const namespace = covertToAscii(fileKey);
+    const namespace = convertToAscii(fileKey);
     PineconeUtils.chunkedUpsert(pineconeIndex, vectors, namespace, 10);
     return documents[0];
 }
