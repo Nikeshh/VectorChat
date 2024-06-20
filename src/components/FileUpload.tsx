@@ -6,7 +6,7 @@ import { Inbox, Loader2 } from 'lucide-react';
 import React from 'react';
 import { useDropzone } from "react-dropzone";
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { toast } from "sonner";
 import { useRouter } from 'next/navigation';
 
 const FileUpload = () => {

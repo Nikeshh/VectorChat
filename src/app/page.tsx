@@ -4,14 +4,15 @@ import { Button } from "@/components/ui/button";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
 import { checkSubscription } from "@/lib/subscription";
-import { UserButton, auth } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { ArrowRight, LogIn } from "lucide-react";
 import Link from "next/link";
 
 export default async function Home() {
-
-  const { userId } = await auth();
+  const user = await currentUser();
+  const userId = user?.id;
   const isAuth = !!userId;
   const isPro = await checkSubscription();
   let firstChat;

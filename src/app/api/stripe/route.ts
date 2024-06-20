@@ -3,7 +3,7 @@
 import { db } from "@/lib/db";
 import { userSubscriptions } from "@/lib/db/schema";
 import { stripe } from "@/lib/stripe";
-import { auth, currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
@@ -11,8 +11,8 @@ const return_url = process.env.NEXT_BASE_URL + '/';
 
 export async function GET() {
     try {
-        const { userId } = await auth();
         const user = await currentUser();
+        const userId = user?.id;
         if (!userId) {
             return new NextResponse('unauthorized', { status: 401 });
         }

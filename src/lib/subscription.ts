@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { db } from "./db";
 import { userSubscriptions } from "./db/schema";
 import { eq } from "drizzle-orm";
@@ -6,7 +6,8 @@ import { eq } from "drizzle-orm";
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
 export const checkSubscription = async () => {
-    const { userId } = await auth();
+    const user = await currentUser();
+    const userId = user?.id;
     if (!userId) {
         return false;
     }
