@@ -3,10 +3,13 @@
 import React from "react";
 import { Button } from "./ui/button";
 import axios from "axios";
+import { useUser } from "@clerk/clerk-react";
 
 type Props = { isPro: boolean };
 
 const SubscriptionButton = (props: Props) => {
+    const { isSignedIn, user, isLoaded } = useUser();
+
     const [loading, setLoading] = React.useState(false);
     const handleSubscription = async () => {
         try {
@@ -21,9 +24,11 @@ const SubscriptionButton = (props: Props) => {
     };
 
     return (
-        <Button disabled={loading} onClick={handleSubscription} variant="outline">
-            {props.isPro ? "Manage Subscriptions" : "Get Pro"}
-        </Button>
+        isSignedIn && (
+            <Button disabled={loading} onClick={handleSubscription} variant="outline">
+                {props.isPro ? "Manage Subscriptions" : "Get Pro"}
+            </Button>
+        )        
     );
 };
 
