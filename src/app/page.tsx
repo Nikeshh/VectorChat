@@ -54,6 +54,12 @@ export default async function Home() {
               </Link>
             )}
           </div>
+          <div className="flex flex-col justify-center mt-10">
+            <p>There is a limit of open ai tokens due to free tier. Please use the sample pdf below. It has less number of pages and token, so there wont be any open ai error</p>
+            <Link href={'./sample_resume.pdf'} target="_blank" className="text-blue-600 underline">
+              Download
+            </Link>
+          </div>
         </div>
       </div>
     </div>
