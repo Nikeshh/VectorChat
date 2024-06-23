@@ -37,9 +37,9 @@ export default async function Home() {
                 <Button>Go to Chats <ArrowRight className="ml-2" /></Button>
               </Link>
             }
-            <div className="ml-3">
+            {/*<div className="ml-3">
               <SubscriptionButton isPro={isPro} />
-            </div>
+            </div>*/}
           </div>
           <p className="max-w-xl mt-1 text-lg text-slate-600">
             Join millions of students, researchers and professionals to instantly answer questions and understand research with AI

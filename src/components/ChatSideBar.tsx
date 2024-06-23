@@ -48,7 +48,7 @@ const ChatSideBar = ({ chats, chatId, isPro }: Props) => {
                     <Link href='/'>Home</Link>
                     <Link href='/'>Source</Link>
                 </div>
-                <SubscriptionButton isPro={isPro} />
+                {/*<SubscriptionButton isPro={isPro} />*/}
             </div>
         </div>
     );
